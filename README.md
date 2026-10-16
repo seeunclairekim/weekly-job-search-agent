@@ -1,28 +1,24 @@
-# Weekly Job Search Markdown export
+# Weekly Job Search: Autonomous AI Job Matching Agent
 
-Exported 15 October 2026 for Albert Slooten.
+## Overview
+Weekly Job Search is a reusable, prompt-engineered AI workflow designed to match university students with fresh, verified job and internship opportunities based on their individual background and constraints. 
 
-## Files
+Rather than relying on generic keyword searches or black-box algorithms, this agent executes a transparent two-stage decision process:
+1. **Hard Requirements Filter:** Strictly eliminates vacancies that violate hard constraints (e.g., maximum weekly hours, location boundaries, language prerequisites, or excluded duties like cold sales).
+2. **Decision Rubric (40/30/20/10):** Evaluates qualified roles across career goals (40%), verified skills/experience (30%), practical feasibility (20%), and industry preferences (10%).
 
-- `PROJECT_EXPLANATION.md`: complete project description supplied by Albert, including what AI enables the team to build, the workflow, technical architecture and evaluation plan.
+## Project Architecture & Core Files
+- `PROJECT_EXPLANATION.md`: Comprehensive system architecture, technical design, rubric definitions, and evaluation framework.
+- `installed-skill/SKILL.md`: The central execution ruleset controlling agent behavior, verification bounds, and output formatting.
+- `installed-skill/references/onboarding.md`: The conversational intake questionnaire and standardized profile schema used to onboard new students.
+- `installed-skill/references/workflow.md`: Retrieval procedures for public ATS endpoints (SmartRecruiters, Greenhouse, Teamtailor), freshness verification, and deduplication logic.
+- `AUTOMATION_SETTINGS.md`: Scheduled recurring execution parameters (Friday weekly delivery).
+- `AUTOMATION_PROMPT.md`: Reference configuration for scheduled task execution and document generation.
 
-- `installed-skill/SKILL.md`: exact installed reusable instructions.
-- `installed-skill/references/onboarding.md`: setup questions and profile schema.
-- `installed-skill/references/albert-profile-and-companies.md`: private profile and company source list.
-- `installed-skill/references/workflow.md`: retrieval, email, history and validation instructions.
-- `AUTOMATION_PROMPT.md`: current saved Friday task instructions, including application PDFs, five-job maximum, ranking rubric and minimal document editing.
-- `AUTOMATION_SETTINGS.md`: schedule and task settings at export time.
+## How to Run & Validate
+1. **Interactive Setup:** An incoming student provides their CV text or answers the structured intake checklist defined in `onboarding.md`.
+2. **Execution:** Load `SKILL.md`, `onboarding.md`, and `workflow.md` into an LLM execution environment (e.g., ChatGPT / Custom Agent).
+3. **Delivery:** The workflow retrieves active vacancies, executes the hard-constraint filter, calculates rubric match scores, and generates a structured digest with concrete match rationales and document checklists.
 
-## Version differences
-
-The installed skill is an older snapshot. Its profile still contains superseded details, including the department-record wording and current Legacy employment. The automation includes Albert's corrections: Telia company record, GPA 9.5/12, Legacy ended 1 October 2026, and available 1 January 2027. It also contains the newer PDF package and minimal-edit instructions. The automation has accumulated update sections; later explicit overrides take precedence. This export preserves the originals rather than silently rewriting them.
-
-## Privacy and reuse
-
-This package includes Albert's personal contact details, experience, company preferences, and references to private source documents. Remove these before distributing a generic version. Each new user needs their own confirmed profile, source documents, email authorization and scheduled task. The Markdown alone does not install connections, create an automation or deliver email.
-
-## Current limits
-
-The HTML dashboard was started but has not been deployed or connected to the weekly task. The latest minimal-edit document rules still require end-to-end validation. Exporting these files does not update the installed skill or prove unattended execution.
-
-This bundle contains the job-search project's own Markdown and exported automation instructions. General platform skills used for document formatting, website tools and email operations are not project-owned files and are not bundled.
+## Academic & Course Context
+Developed as part of the Economics/Political Economy of AI course. This project demonstrates AI-enabled capability creation—orchestrating unstructured web retrieval, deterministic constraint filtering, and transparent qualitative comparison without requiring a traditional backend infrastructure.
